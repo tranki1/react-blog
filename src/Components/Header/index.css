@@ -1,0 +1,35 @@
+.Header{
+  padding : 20px 10px;
+  margin-bottom:30px;
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color:var(--color-2)
+}
+.ulNavLink {
+  margin:0;
+}
+.liNavLink {
+  display: inline-block;
+  margin: 0px 3px 0px 0px;
+}
+.liNavLink a::after{
+    content: "";
+    border-right: 7px solid #1FB3E5;
+    padding-right:5px;
+}
+.liNavLink a {
+  text-decoration: none;
+  font-size: 0.95rem;
+  margin-right:7px;
+  text-transform: uppercase;
+  color: #1FB3E5;
+}
+
+.liNavLink a.activeNavLink {
+  color: indianred;
+}
+.liNavLink a.activeNavLink::after {
+    content: "";
+    border-right: 7px solid indianred;
+  }

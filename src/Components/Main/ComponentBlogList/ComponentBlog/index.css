@@ -1,0 +1,16 @@
+.BlogPost {
+	background-color:white;
+	box-shadow: 0px 1px 10px var(--color-4);
+	height:fit-content;
+}
+.BlogTitle {
+	font-size: 2rem;
+	padding:20px 20px 10px 20px;
+}
+.BlogContent{
+	padding:0px 20px 10px 20px;
+	border-bottom:1px solid var(--color-2);
+}
+.BlogAuthor{
+	padding:10px 20px 20px 20px;
+}

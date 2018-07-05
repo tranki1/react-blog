@@ -1,17 +1,17 @@
 import React from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
 import styles from './App.css';
-
 import Header from './Header';
 import Main from './Main';
 import Footer from './Footer';
 
 const App = () => (
-  <div className={styles.App}>
-    <Header />
-    <Main>
-      <h1>Hello to trungh13-react-boilerplate</h1>
-    </Main>
-    <Footer />
-  </div>
+  <Router>
+    <div className={styles.App}>
+      <Header />
+      <Main />
+      <Footer />
+    </div>
+  </Router>
 );
 export default App;
