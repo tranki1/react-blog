@@ -1,35 +1,38 @@
-.Header{
-  padding : 20px 10px;
-  margin-bottom:30px;
-  display:flex;
+.Header {
+  padding:  30px;
+  display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color:var(--color-2)
+  background-color: var(--color-2);
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
 }
 .ulNavLink {
-  margin:0;
+  margin: 0;
 }
 .liNavLink {
   display: inline-block;
   margin: 0px 3px 0px 0px;
 }
-.liNavLink a::after{
-    content: "";
-    border-right: 7px solid #1FB3E5;
-    padding-right:5px;
+.liNavLink a::after {
+  content: '';
+  border-right: 7px solid var(--color-4);
+  padding-right: 5px;
 }
 .liNavLink a {
   text-decoration: none;
   font-size: 0.95rem;
-  margin-right:7px;
+  margin-right: 7px;
   text-transform: uppercase;
-  color: #1FB3E5;
+  color: var(--color-4);
 }
 
 .liNavLink a.activeNavLink {
-  color: indianred;
+  color: var(--color-5);
 }
 .liNavLink a.activeNavLink::after {
-    content: "";
-    border-right: 7px solid indianred;
-  }
+  content: '';
+  border-right: 7px solid var(--color-5);
+}

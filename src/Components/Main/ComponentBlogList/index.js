@@ -1,11 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { withRouter, Link } from 'react-router-dom';
 
 import styles from './index.css';
 import Blog from './ComponentBlog';
 
 const ComponentBlogList = ({ blogs }) => {
-  const renderBlogPost = blogs.map(blog => <Blog key={blog.id} {...blog} />);
+  const renderBlogPost = blogs.map(blog => (
+    <Link to={`/posts/${blog.id}`} key={blog.id}>
+      <Blog {...blog} />
+    </Link>
+  ));
   return <div className={styles.BlogList}>{renderBlogPost}</div>;
 };
 
@@ -20,4 +25,4 @@ ComponentBlogList.propTypes = {
   ).isRequired,
 };
 
-export default ComponentBlogList;
+export default withRouter(ComponentBlogList);
