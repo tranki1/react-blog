@@ -5,7 +5,6 @@ import * as contentful from 'contentful';
 import styles from './index.css';
 import ComponentBlogList from './ComponentBlogList';
 import ComponentBlogPost from './ComponentBlogPost';
-import ComponentAddNew from './ComponentAddNew';
 
 export default withRouter(
   class Main extends React.Component {
@@ -23,9 +22,7 @@ export default withRouter(
     componentDidMount() {
       const { blogs } = this.state;
       let id = 0;
-      console.log('initial mount');
       if (Object.keys(blogs).length === 0) {
-        console.log('import data ');
         this.client.getEntries({ content_type: 'blog' }).then((entries) => {
           const importBlog = {};
           entries.items.forEach((entry) => {
@@ -56,17 +53,9 @@ export default withRouter(
 
     render() {
       const { blogs } = this.state;
-      console.log(blogs);
       return (
         <div className={styles.Main}>
           <Switch>
-            <Route
-              exact
-              path="/posts/newpost"
-              render={props => (
-                <ComponentAddNew {...props} addNewSubmit={this.addNewSubmit} newId={blogs[0].id} />
-              )}
-            />
             <Route
               exact
               path="/posts/:id"

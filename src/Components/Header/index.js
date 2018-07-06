@@ -12,11 +12,6 @@ const Header = () => (
           Blog List
         </NavLink>
       </li>
-      <li className={styles.liNavLink}>
-        <NavLink activeClassName={styles.activeNavLink} exact to="/posts/newpost">
-          Add new blog post
-        </NavLink>
-      </li>
     </ul>
   </div>
 );
