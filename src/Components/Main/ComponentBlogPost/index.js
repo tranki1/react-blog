@@ -1,30 +1,40 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import styles from './index.css';
 
 const ComponentBlogPost = ({ blogs, blogPostDelete, match }) => {
   const currentId = Number(match.params.id);
-  const blogPost = blogs.find(post => post.id === currentId);
+  const blogPost = blogs[currentId];
+  console.log('blogPost', blogPost);
+  const {
+    blogTitle, blogContent, blogPhoto, categories,
+  } = blogPost;
+  const blogPhotoURL = `https:${blogPhoto.fields.file.url}`;
+  const renderCategories = categories.map(category => (
+    <div key={category.fields.category} className={styles.blogCategory}>
+      {category.fields.category}
+    </div>
+  ));
   return (
-    <div>
-      <h1>{blogPost.BlogTitle}</h1>
-      <p>{blogPost.BlogContent}</p>
-      <Link to="/">
-        <button type="button" onClick={() => blogPostDelete(currentId)}>
-          Delete
-        </button>
-      </Link>
+    <div className={styles.blogPost}>
+      <h1 className={styles.blogHeading}>{blogTitle}</h1>
+      <img className={styles.blogPhoto} src={blogPhotoURL} alt="" />
+      <div className={styles.blogBody}>
+        <div className={styles.blogContent}>{blogContent}</div>
+        {categories.length !== 0 && <div className={styles.blogCategories}>{renderCategories}</div>}
+        <Link to="/">
+          <button type="button" onClick={() => blogPostDelete(currentId)}>
+            Delete
+          </button>
+        </Link>
+      </div>
     </div>
   );
 };
 
 ComponentBlogPost.propTypes = {
-  blogs: PropTypes.arrayOf(
-    PropTypes.shape({
-      BlogTitle: PropTypes.string.isRequired,
-      BlogContent: PropTypes.string.isRequired,
-    }).isRequired,
-  ).isRequired,
+  blogs: PropTypes.shape(PropTypes.shape({}).isRequired).isRequired,
   match: PropTypes.shape({
     params: PropTypes.shape({
       id: PropTypes.string.isRequired,

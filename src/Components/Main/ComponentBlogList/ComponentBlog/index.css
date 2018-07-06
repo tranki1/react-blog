@@ -1,17 +1,36 @@
-.BlogPost {
-	background-color:white;
-	box-shadow: 0px 1px 10px var(--color-4);
-	height:fit-content;
+.blogPost {
+  background-color: white;
+  box-shadow: 0px 1px 10px var(--color-4);
+  height: fit-content;
 }
-.BlogTitle {
-	font-size: 2rem;
-	padding:20px 20px 10px 20px;
-	font-weight: 200;
+.blogPhotoThumbnail {
+  width: 100%;
 }
-.BlogContent{
-	padding:0px 20px 10px 20px;
-	border-bottom:1px solid var(--color-2);
+.blogBody {
+  padding: 30px 30px 0px;
 }
-.BlogAuthor{
-	padding:10px 20px 20px 20px;
+.blogTitle {
+  font-size: 2.2rem;
+  font-weight: 300;
+  padding-bottom: 30px;
+}
+.blogContent {
+  border-bottom: 1px solid var(--color-2);
+  padding-bottom: 30px;
+}
+.blogFooter {
+  padding: 0px 30px 30px;
+}
+.blogCategories {
+  padding-top: 30px;
+  display: flex;
+  justify-content: flex-end;
+}
+.blogCategory {
+  padding: 7px 15px;
+  font-size: 0.8rem;
+  background-color: var(--color-5);
+  border-radius: 50px;
+  margin-right: 10px;
+  color: white;
 }

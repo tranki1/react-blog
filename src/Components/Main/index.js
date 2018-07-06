@@ -1,22 +1,41 @@
 import React from 'react';
 import { Route, Switch, withRouter } from 'react-router-dom';
 
+import * as contentful from 'contentful';
 import styles from './index.css';
 import ComponentBlogList from './ComponentBlogList';
 import ComponentBlogPost from './ComponentBlogPost';
 import ComponentAddNew from './ComponentAddNew';
-import data from '../../dumbData.json';
 
 export default withRouter(
   class Main extends React.Component {
+    client = contentful.createClient({
+      space: 'xkor0eghrby7',
+      accessToken: '515944213e81ffc3acb08f71ffd6da52732a953a0fee385cdfb570339cda92a7',
+      resolveLinks: true,
+      dynamic_entries: 'auto',
+    });
+
     state = {
-      blogs: [],
+      blogs: {},
     };
 
     componentDidMount() {
       const { blogs } = this.state;
-      if (blogs.length === 0) {
-        this.setState({ blogs: data });
+      let id = 0;
+
+      if (Object.keys(blogs).length === 0) {
+        this.client.getEntries({ content_type: 'blog' }).then((entries) => {
+          console.log('entries', entries);
+          const importBlog = {};
+          entries.items.forEach((entry) => {
+            if (entry.fields) {
+              importBlog[id] = entry.fields;
+              id += 1;
+            }
+          });
+          this.setState({ blogs: { ...importBlog } });
+        });
       }
     }
 

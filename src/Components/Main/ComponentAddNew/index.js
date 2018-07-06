@@ -28,9 +28,24 @@ class ComponentAddNew extends Component {
     const { BlogTitle, BlogContent, BlogAuthor } = this.state;
     return (
       <form onSubmit={this.handleSubmit}>
-        <input type="text" name="BlogTitle" value={BlogTitle} onChange={this.handleChange} />
-        <input type="text" name="BlogContent" value={BlogContent} onChange={this.handleChange} />
-        <input type="number" name="BlogAuthor" value={BlogAuthor} onChange={this.handleChange} />
+        <label htmlFor="BlogTitle">
+          Blog Title
+          <input
+            type="text"
+            id="BlogTitle"
+            name="BlogTitle"
+            value={BlogTitle}
+            onChange={this.handleChange}
+          />
+        </label>
+        <label htmlFor="BlogContent">
+          Blog Content
+          <input type="text" id="BlogContent" name="BlogContent" value={BlogContent} onChange={this.handleChange} />
+        </label>
+        <label htmlFor="BlogAuthor">
+          Blog Author
+          <input type="number" id="BlogAuthor" name="BlogAuthor" value={BlogAuthor} onChange={this.handleChange} />
+        </label>
         <button type="submit">Add</button>
         <button type="button" onClick={this.handleClose}>
           Close
