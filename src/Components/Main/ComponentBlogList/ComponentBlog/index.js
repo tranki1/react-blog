@@ -7,7 +7,12 @@ const ComponentBlog = (props) => {
   const {
     blogTitle, blogDescription, blogPhotoThumbnail, categories,
   } = props;
-  const blogPhotoThumbnailURL = `https:${blogPhotoThumbnail.fields.file.url}`;
+  let blogPhotoThumbnailURL;
+  if (Object.keys(blogPhotoThumbnail).length !== 0) {
+    blogPhotoThumbnailURL = `https:${blogPhotoThumbnail.fields.file.url}`;
+  } else {
+    blogPhotoThumbnailURL = '';
+  }
   const renderCategories = categories.map(category => (
     <div key={category.fields.category} className={styles.blogCategory}>
       {category.fields.category}

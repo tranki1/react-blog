@@ -6,7 +6,6 @@ import styles from './index.css';
 const ComponentBlogPost = ({ blogs, blogPostDelete, match }) => {
   const currentId = Number(match.params.id);
   const blogPost = blogs[currentId];
-  console.log('blogPost', blogPost);
   const {
     blogTitle, blogContent, blogPhoto, categories,
   } = blogPost;

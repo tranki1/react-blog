@@ -23,10 +23,10 @@ export default withRouter(
     componentDidMount() {
       const { blogs } = this.state;
       let id = 0;
-
+      console.log('initial mount');
       if (Object.keys(blogs).length === 0) {
+        console.log('import data ');
         this.client.getEntries({ content_type: 'blog' }).then((entries) => {
-          console.log('entries', entries);
           const importBlog = {};
           entries.items.forEach((entry) => {
             if (entry.fields) {
@@ -41,19 +41,22 @@ export default withRouter(
 
     handleDelete = (id) => {
       const { blogs } = this.state;
-      const newBlogList = [...blogs];
-      this.setState({ blogs: newBlogList.filter(post => post.id !== id) });
+      const newBlogList = { ...blogs };
+      delete newBlogList[id];
+      this.setState({ blogs: newBlogList });
     };
 
     addNewSubmit = (newBlog) => {
       const { blogs } = this.state;
+      const newId = Object.keys(blogs).length + 1;
       this.setState({
-        blogs: [newBlog, ...blogs],
+        blogs: { ...blogs, [newId]: newBlog },
       });
     };
 
     render() {
       const { blogs } = this.state;
+      console.log(blogs);
       return (
         <div className={styles.Main}>
           <Switch>

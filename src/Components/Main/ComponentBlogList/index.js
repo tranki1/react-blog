@@ -6,7 +6,6 @@ import styles from './index.css';
 import Blog from './ComponentBlog';
 
 const ComponentBlogList = ({ blogs }) => {
-  console.log('list', blogs);
   if (Object.keys(blogs).length !== 0) {
     const renderBlogPost = Object.keys(blogs).map(id => (
       <Link className={styles.BlogLink} to={`/posts/${id}`} key={id}>
